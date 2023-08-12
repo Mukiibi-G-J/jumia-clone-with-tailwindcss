@@ -1,113 +1,158 @@
-import Image from 'next/image'
+"use client";
+import NavBar from "@/components/NavBar";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
+import { Autoplay, Pagination } from "swiper";
+// import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+import {
+  Checkroom,
+  ChildCare,
+  FitnessCenter,
+  HomeWork,
+  Laptop,
+  LiveTv,
+  MoreHoriz,
+  PhoneIphone,
+  SportsEsports,
+} from "@mui/icons-material";
+// import ReactPlayer from "react-player";
+import { sliders } from "@/data";
+import ReactPlayer from "react-player";
+const gif = [
+  "https://ug.jumia.is/cms/UG_WK28_Samsung_SmallBanner_218X184_NEW.gif",
+  "/video/jumia.gif",
+];
+function SideBar({ Icon, title }) {
+  // const classes = useStyles();
+  return (
+    <div className="flex align-center hover:text-[#E4811C]">
+      <Icon className="mr-2 ml-2 mb-3" />
+      <span className="text-[12px]">{title}</span>
+    </div>
+  );
+}
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-9 xl:grid-cols-12 py-8 px-8 gap-3">
+        <div className="bg-white shadow-md rounded-md hidden md:block md:col-span-3 h-auto xl:col-span-3 ">
+          <SideBar Icon={PhoneIphone} title="Phone $ Tablets" />
+          <SideBar Icon={HomeWork} title="Home & Office" />
+          <SideBar Icon={LiveTv} title="Electronics" />
+          <SideBar Icon={Checkroom} title="Fashion" />
+          <SideBar Icon={Laptop} title="Computing" />
+          <SideBar Icon={FitnessCenter} title="Sporting Goods" />
+          <SideBar Icon={ChildCare} title="Baby Products" />
+          <SideBar Icon={SportsEsports} title="Gaming" />
+          {/* <SideBar Icon={Yard}  title=""/> */}
+          <SideBar Icon={MoreHoriz} title="Others" />
+        </div>
+        <div className="bg-white shadow-md rounded-md md:col-span-5 xl:col-span-6">
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination, Autoplay]} // Include Autoplay module
+            className="h-auto bg-white shadow-md rounded-md "
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            {sliders.map((slider, index) => (
+              <SwiperSlide className="" key={index}>
+                <img
+                  className="xl:h-[354px] object-contain  bg-white shadow- rounded-md"
+                  src={slider}
+                ></img>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          <SwiperSlide>Slide 1</SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+        </Swiper> */}
+        </div>
+        {/* <div className="col-span-1"></div> */}
+        <div className="md:col-span-2 xl:col-span-3 hidden xl:block">
+          <div className="bg-white shadow-xl rounded-md w-[200px] ">
+            <div className="flex  p-2 algin-center">
+              <img
+                className="object-contain"
+                height={30}
+                width={30}
+                src="/logos/help_center.png"
+                alt=""
+              />
+              <div className="flex ml-2 flex-col">
+                <span className="md:text-[12px] lg:text-[14px] ">
+                  HELP CENTER
+                </span>
+                <span className="md:text-[10px] lg:text-[12px] ">
+                  Guide to customer Care
+                </span>
+              </div>
+            </div>
+
+            <div className="flex  p-2 algin-center">
+              <img
+                className="object-contain"
+                height={30}
+                width={30}
+                src="/logos/returns-refunds.png"
+                alt=""
+              />
+              <div className="flex ml-2 flex-col algin-center">
+                <span className="md:text-[12px] lg:text-[14px]">
+                  EASY RETURN
+                </span>
+                <span className="sm:text-[10px] lg:text-[12px] ">
+                  Quick Refund
+                </span>
+              </div>
+            </div>
+            <div className="flex  p-2 algin-center">
+              <img
+                className="object-contain"
+                height={30}
+                width={30}
+                src="/logos/sell-on-jumia.png"
+                alt=""
+              />
+              <div className="flex ml-2 flex-col">
+                <span className="md:text-[12px] lg:text-[14px] ">SELL</span>
+                <span className="sm:text-[10px] lg:text-[12px]  flex-inline">
+                  Millions of Customers
+                </span>
+              </div>
+            </div>
+            {/* <ReactPlayer
+            playing={true}
+            muted
+            loop={true}
+            width={320}
+            height={20}
+            url={["/video/jumia.mp4", "/video/ad.mp4"]}
+            type="video/mp4"
+          /> */}
+          </div>
+          <div className="bg-white shadow-xl rounded-md w-[200px] h-[173px] mt-2 ">
+            <img
+              className=" object-cover bg-white shadow-xl rounded-md  w-[100%]"
+              src="https://ug.jumia.is/cms/UG_WK28_Samsung_SmallBanner_218X184_NEW.gif"
             />
-          </a>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </div>
+  );
 }
