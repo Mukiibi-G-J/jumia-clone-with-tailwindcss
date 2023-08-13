@@ -23,6 +23,8 @@ import {
 // import ReactPlayer from "react-player";
 import { sliders } from "@/data";
 import ReactPlayer from "react-player";
+import Categories from "@/components/Categories";
+import Products from "@/components/Products";
 const gif = [
   "https://ug.jumia.is/cms/UG_WK28_Samsung_SmallBanner_218X184_NEW.gif",
   "/video/jumia.gif",
@@ -38,8 +40,9 @@ function SideBar({ Icon, title }) {
 }
 export default function Home() {
   return (
-    <div className="">
-      <div className="grid grid-cols-1 md:grid-cols-9 xl:grid-cols-12 py-8 px-8 gap-3">
+    <div className="md:py-8 md:px-8 py-6 px-6">
+      {/* FEED */}
+      <div className="grid grid-cols-1 md:grid-cols-9 xl:grid-cols-12  gap-3">
         <div className="bg-white shadow-md rounded-md hidden md:block md:col-span-3 h-auto xl:col-span-3 ">
           <SideBar Icon={PhoneIphone} title="Phone $ Tablets" />
           <SideBar Icon={HomeWork} title="Home & Office" />
@@ -82,7 +85,6 @@ export default function Home() {
           <SwiperSlide>Slide 4</SwiperSlide>
         </Swiper> */}
         </div>
-        {/* <div className="col-span-1"></div> */}
         <div className="md:col-span-2 xl:col-span-3 hidden xl:block">
           <div className="bg-white shadow-xl rounded-md w-[200px] ">
             <div className="flex  p-2 algin-center">
@@ -153,6 +155,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* CATEGORRIES */}
+      <Categories />
+      {/* PRODUCTS */}
+      <Products />
     </div>
   );
 }
