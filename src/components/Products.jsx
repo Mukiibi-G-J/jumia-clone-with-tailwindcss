@@ -1,6 +1,7 @@
 import React from "react";
-import { myProducts } from "@/data";
+import { ads, exp, myProductV2 } from "@/data";
 import { ChevronRight } from "@mui/icons-material";
+import dynamic from "next/dynamic";
 
 // Function to shuffle an array using Fisher-Yates algorithm
 function shuffleArray(array) {
@@ -15,7 +16,7 @@ function Products() {
   return (
     <div>
       <div>
-        {myProducts.map((category, index) => {
+        {myProductV2.map((category, index) => {
           const shuffledProducts = shuffleArray([...category.products]);
           const selectedProducts = shuffledProducts.slice(0, 5);
 
@@ -37,7 +38,7 @@ function Products() {
                     >
                       <div className="h-40 flex items-center justify-center">
                         <img
-                          src={product.image}
+                          src={`product_images/${product.image}`}
                           alt=""
                           className="object-contain"
                         />
@@ -49,13 +50,8 @@ function Products() {
                             ? product.name.slice(0, 20) + "..."
                             : product.name}
                         </span>
-                        <span className="text-md ">{product.price}</span>
-                        {/* <span>🌟 🌟 🌟 🌟</span>
-                        <button className="bg-[#FF9900] p-1 mb-4 rounded-xl mt-2 hover:bg-[#E4811C]">
-                          Add to Cart
-                        </button> */}
+                        <span className="text-md">{product.price}</span>
                       </div>
-                      {/* <div className=""></div> */}
                     </div>
                   </div>
                 ))}
@@ -64,8 +60,53 @@ function Products() {
           );
         })}
       </div>
+      <div>
+        <div>
+          <div className="flex items-center justify-center bg-[#FF9900] p-2 mt-4">
+            <p> Trend Setter Deals</p>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {ads.map((image, index) => (
+              <div
+                key={index}
+                className=" mt-4  rounded-md transition-transform duration-200 ease-in-out hover:scale-105 "
+              >
+                <img src={image} alt="" className="rounded-md" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* big ad */}
+      <div className="mt-4  ">
+        <div className="flex items-center justify-center bg-[#FF9900] p-2 mt-4">
+          <p>Don't miss out on these!</p>
+        </div>
+        <div className="flex item-center justify-center">
+          <img src="/ad/big_ad.png" alt="" className="rounded-md w-[1500px]" />
+        </div>
+      </div>
+      {/* Explore More */}
+      <div>
+        <div>
+          <div className="flex items-center justify-center bg-[#FF9900] p-2 mt-4">
+            <p> Explore More</p>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {exp.map((image, index) => (
+              <div
+                key={index}
+                className=" mt-4  rounded-md transition-transform duration-200 ease-in-out hover:scale-105 "
+              >
+                <img src={image} alt="" className="rounded-md" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Products;
+// export default Products;
+export default dynamic(() => Promise.resolve(Products), { ssr: false });
