@@ -32,7 +32,7 @@ function Footer() {
               }`}
             >
               <Mail
-                className={`mr-2 ${isInputFocused ? "text-[#F68B1E]" : ""}`}
+                className={`mr-2 ${isInputFocused ? "text-[#F68B1E]" : ""} hidden md:inline-block`}
               />
               <input
                 type="text"
@@ -70,9 +70,9 @@ function Footer() {
         </div>
       </div>
       <div>
-        <div className="px-8 py-4 grid grid-cols-4 bg-[#535357]">
+        <div className="px-8 py-4 grid grid-cols-1 mt-3 md:grid-cols-4 bg-[#535357]">
           {footer_options.map((footer_option, index) => (
-            <div key={index} className="flex flex-col">
+            <div key={index} className="flex flex-col mt-3">
               <h1 className="text-white  text-[12px] font-[600] ">
                 {footer_option.title}
               </h1>
