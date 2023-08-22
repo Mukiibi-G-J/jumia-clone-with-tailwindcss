@@ -34,6 +34,63 @@ export const categories_2 = [
   "/categories/cat_15.png",
   "/categories/cat_16.png",
 ];
+export const footer_options = [
+  {
+    title: "NEED HELP?",
+    options: ["Chat with us", "Help Center", "Contact us"],
+  },
+  {
+    title: "ABOUT JUMIA UGANDA",
+    options: [
+      "About us",
+      "Jumia Careers",
+      "IPR Protection Policy",
+      "Terms and Conditions",
+      "Store & Credit Terms & Conditions",
+      "Dispute Resolution Policy",
+      "Privacy Policy Notice",
+      "Cookie Notice",
+      "Return & Refund Policy",
+      "Flash Sales",
+    ],
+  },
+  {
+    title: "MAKE MONEY WITH US",
+    options: [
+      "Sell on Jumia",
+      "Become a Sales Consultant",
+      "Become a Logistics Service Partner",
+      "Become a Jumia Delivery Agent",
+      "Jumia B2B",
+    ],
+  },
+  {
+    title: "JUMIA INTERNATIONAL",
+    options: [
+      "Algerie",
+      "Côte d'Ivoire",
+      "Egypt",
+      "Ghana",
+      "Kenya",
+      "Morocco",
+      "Nigeria",
+      "Senegal",
+      "Tunisia",
+    ],
+  },
+  // {
+  //   title: "USEFUL LINKS",
+  //   options: [
+  //     "How to buy on Jumia",
+  //     "Payment Methods",
+  //     "Delivery",
+  //     "Delivery Timelines",
+  //     "Report a Product",
+  //     "Return Process",
+  //     "Jumia Payment Information Guidelines",
+  //   ],
+  // },
+];
 
 export const ads = ["ad/ad8.png", "ad/ad9.png", "ad/ad10.png"];
 export const exp = ["ad/exp1.png", "ad/exp2.png", "ad/exp3.png"];
