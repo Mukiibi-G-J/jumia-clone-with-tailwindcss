@@ -32,7 +32,7 @@ function Footer() {
               }`}
             >
               <Mail
-                className={`mr-2 ${isInputFocused ? "text-[#F68B1E]" : ""} hidden md:inline-block`}
+                className={`mr-2 ${isInputFocused ? "text-[#F68B1E]" : " "} hidden md:inline-block`}
               />
               <input
                 type="text"
